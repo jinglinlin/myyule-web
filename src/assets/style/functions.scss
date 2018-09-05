@@ -1,0 +1,119 @@
+
+@mixin group($type, $n, $m) {
+  #{$type}-top: $n;
+  #{$type}-bottom: $n;
+  #{$type}-left: $m;
+  #{$type}-right: $m;
+}
+
+@mixin border($n, $type, $color) {
+  border-width: $n;
+  border-style: $type;
+  border-color: $color;
+}
+
+@mixin border-top($width,$style,$color) {
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    content: '';
+    border-bottom-width: $width;
+    border-bottom-style: $style;
+    border-bottom-color: $color;
+  }
+}
+@mixin border-bottm($width,$style,$color) {
+  position: relative;
+  &::after {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 100%;
+    content: '';
+    border-bottom-width: $width;
+    border-bottom-style: $style;
+    border-bottom-color: $color;
+  }
+}
+@mixin move() {
+  &.move-enter-active {
+    transition: all 0.2s linear
+  }
+  &.move-enter,
+  &.move-leave-active {
+    transform: translate3d(100%, 0, 0)
+  }
+}
+@mixin translateX() {
+  &.move-enter-active,&.move-leave-active {
+    transition: all 0.2s linear
+  }
+  &.move-enter,
+  &.move-leave-active {
+    transform: translate3d(100%, 0, 0)
+  }
+}
+@mixin translateX2() {
+  &.move-enter-active,&.move-leave-active {
+    transition: all 0.2s linear
+  }
+  &.move-enter,
+  &.move-leave-active {
+    transform: translate3d(-100%, 0, 0)
+  }
+}
+@mixin translateY() {
+  &.move-enter-active,&.move-leave-active {
+    transition: all 0.2s linear
+  }
+  &.move-enter,
+  &.move-leave-active {
+    transform: translate3d(0, 100%, 0)
+  }
+}
+@mixin translateY2() {
+  &.move-enter-active,&.move-leave-active {
+    transition: all 0.2s linear
+  }
+  &.move-enter,
+  &.move-leave-active {
+    transform: translate3d(0, -100%, 0)
+  }
+}
+@mixin opacity() {
+  &.move-enter-active,
+  &.move-leave-active {
+    transition: all 0.2s linear
+  }
+  &.move-enter,
+  &.move-leave-active {
+    opacity: 0;
+  }
+}
+@mixin center(){
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+}
+@mixin around(){
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+}
+@mixin border-radius($a){
+  border-bottom-left-radius: $a;
+  border-bottom-right-radius: $a;
+  border-top-left-radius: $a;
+  border-top-right-radius: $a;
+}
+// 省略号
+@mixin ellipsis(){
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
